@@ -1,5 +1,4 @@
 const RobotCard = ({ robotObject }) => {
-
   return (
     <div className="card">
       <img className="card-img-top" src={robotObject.image} alt="Card" width="100" height="200" />
