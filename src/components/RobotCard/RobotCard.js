@@ -1,4 +1,4 @@
-const RobotCard = ({ robotObject }) => {
+const RobotCard = ({ robotObject, deleteClick }) => {
   return (
     <div className="card">
       <img className="card-img-top" src={robotObject.image} alt="Card" width="100" height="200" />
@@ -12,7 +12,7 @@ const RobotCard = ({ robotObject }) => {
       </ul>
       <div className="card-body">
         <button className="btn btn-primary">Edit</button>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" onClick={deleteClick}>Delete</button>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useRobots from "../../hooks/useRobots";
 
 const RobotForm = () => {
@@ -40,7 +40,6 @@ const RobotForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(robotBasic);
     createRobot(robotBasic);
     setrobotBasic(initialRobotBasic);
     setrobotFeatures(initialRobotFeatures);

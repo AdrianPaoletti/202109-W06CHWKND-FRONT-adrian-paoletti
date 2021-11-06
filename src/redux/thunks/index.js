@@ -1,7 +1,8 @@
-import { createRobotAction, loadRobotAction } from "../actions/actionCreator";
+import { createRobotAction, deleteRobotAction, loadRobotAction } from "../actions/actionCreator";
 
 const urlAPIGet = "https://robots-co.herokuapp.com/robots";
-const urlAPICreate = "https://robots-co.herokuapp.com/robots/create"
+const urlAPICreate = "https://robots-co.herokuapp.com/robots/create";
+const urlAPIDelete = "https://robots-co.herokuapp.com/robots/delete/";
 
 export const loadRobotThunks = () => {
   return async (dispatch) => {
@@ -24,5 +25,15 @@ export const createRobotThunks = (robot) => {
     const robots = await response.json();
 
     dispatch(createRobotAction(robots))
+  }
+}
+
+export const deleteRobotThunk = (id) => {
+  return async (dispatch) => {
+    await fetch(`${urlAPIDelete}${id}`, {
+      method: "DELETE"
+    })
+
+    dispatch(deleteRobotAction(id));
   }
 }
