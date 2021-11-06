@@ -1,13 +1,13 @@
 import './App.css';
-import RobotCard from './components/RobotCard/RobotCard';
 import RobotForm from './components/RobotForm/RobotForm';
+import RobotList from './components/RobotList/RobotList';
 
 function App() {
   return (
     <>
       <h1>Robots & Co</h1>
       <RobotForm />
-      <RobotCard />
+      <RobotList />
     </>
   )
 }

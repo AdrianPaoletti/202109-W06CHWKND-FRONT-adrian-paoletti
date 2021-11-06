@@ -1,14 +1,15 @@
-const RobotCard = () => {
+const RobotCard = ({ robotObject }) => {
+
   return (
     <div className="card">
-      <img className="card-img-top" src="..." alt="Card" />
+      <img className="card-img-top" src={robotObject.image} alt="Card" width="100" height="200" />
       <div className="card-body">
-        <h5 className="card-title">Card title</h5>
+        <h5 className="card-title">{robotObject.name}</h5>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item">Cras justo odio</li>
-        <li className="list-group-item">Dapibus ac facilisis in</li>
-        <li className="list-group-item">Vestibulum at eros</li>
+        <li className="list-group-item"><span className="fw-bold">Speed: </span>{robotObject.features.speed}</li>
+        <li className="list-group-item"><span className="fw-bold">Endurance: </span>{robotObject.features.endurance}</li>
+        <li className="list-group-item"><span className="fw-bold">Date Creation: </span>{robotObject.features.date.split("T")[0]}</li>
       </ul>
       <div className="card-body">
         <button className="btn btn-primary">Edit</button>
