@@ -1,24 +1,38 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useMemo, useState } from "react";
 import useRobots from "../../hooks/useRobots";
 
 const RobotForm = () => {
 
-  const { createRobot } = useRobots();
+  const { createRobot, currentRobot, updateRobot } = useRobots();
 
-  const initialRobotFeatures = {
+  const initialRobotFeatures = useMemo(() => ({
     speed: "",
     endurance: "",
     date: ""
-  };
+  }), []);
 
-  const initialRobotBasic = {
+  const initialRobotBasic = useMemo(() => ({
     name: "",
     image: "",
     features: initialRobotFeatures,
-  }
+  }), [initialRobotFeatures]);
 
   const [robotBasic, setrobotBasic] = useState(initialRobotBasic);
   const [robotFeatures, setrobotFeatures] = useState(initialRobotFeatures);
+  const [textButton, setTextButton] = useState("");
+
+  useEffect(() => {
+    if (currentRobot.isEditing) {
+      currentRobot.robot.features.date = currentRobot.robot.features.date.split("T")[0]
+      setrobotBasic(currentRobot.robot);
+      setrobotFeatures(currentRobot.robot.features);
+      setTextButton("Update");
+    } else {
+      setrobotBasic(initialRobotBasic);
+      setTextButton("Create");
+    }
+  }, [currentRobot, initialRobotBasic])
 
   const onChangeBasic = (event) => {
     setrobotBasic({
@@ -40,10 +54,26 @@ const RobotForm = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    createRobot(robotBasic);
+    if (currentRobot.isEditing) {
+      updateRobot({ ...robotBasic, "_id": currentRobot.robot["_id"] })
+    }
+    else {
+      setrobotBasic({
+        ...robotBasic,
+        features: { ...robotFeatures }
+      });
+      createRobot(robotBasic);
+    }
+
     setrobotBasic(initialRobotBasic);
     setrobotFeatures(initialRobotFeatures);
   }
+  useEffect(() => {
+    setrobotBasic({
+      ...robotBasic,
+      features: { ...robotFeatures }
+    });
+  }, [robotFeatures]);
 
   return (
     <form autoComplete="off" onSubmit={onSubmit}>
@@ -69,8 +99,7 @@ const RobotForm = () => {
           <input type="date" className="form-control form-control-sm" id="date" value={robotFeatures.date} onChange={onChangeFeatures} placeholder="Creation date" />
         </div>
       </div>
-      <button type="submit" className="btn btn-primary">Create</button>
-      <pre>{JSON.stringify(robotBasic, null, 2)}</pre>
+      <button type="submit" className="btn btn-primary">{textButton}</button>
     </form>
   )
 }
