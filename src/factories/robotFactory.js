@@ -4,7 +4,7 @@ import { Factory } from "fishery";
 
 const factory = Factory.define(({ sequence }) => ({
   "_id": sequence,
-  name: lorem.word(1),
+  name: lorem.word(7),
   image: image.people(),
   features: {
     speed: datatype.number(10),

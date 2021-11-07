@@ -21,6 +21,7 @@ const RobotForm = () => {
   const [robotBasic, setrobotBasic] = useState(initialRobotBasic);
   const [robotFeatures, setrobotFeatures] = useState(initialRobotFeatures);
   const [textButton, setTextButton] = useState("");
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   useEffect(() => {
     if (currentRobot.isEditing) {
@@ -33,6 +34,10 @@ const RobotForm = () => {
       setTextButton("Create");
     }
   }, [currentRobot, initialRobotBasic])
+
+  useEffect(() => {
+    setButtonDisabled(robotBasic.name === "" || robotBasic.image === "" || robotFeatures.speed === "" || robotFeatures.endurance === "" || robotFeatures.date === "");
+  }, [robotBasic, robotFeatures]);
 
   const onChangeBasic = (event) => {
     setrobotBasic({
@@ -76,7 +81,7 @@ const RobotForm = () => {
   }, [robotFeatures]);
 
   return (
-    <form autoComplete="off" onSubmit={onSubmit}>
+    <form autoComplete="off" onSubmit={onSubmit} noValidate>
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="text" className="form-control" name="name" id="name" value={robotBasic.name} onChange={onChangeBasic} placeholder="Introduce Robot Name" />
@@ -99,7 +104,7 @@ const RobotForm = () => {
           <input type="date" className="form-control form-control-sm" id="date" value={robotFeatures.date} onChange={onChangeFeatures} placeholder="Creation date" />
         </div>
       </div>
-      <button type="submit" className="btn btn-primary">{textButton}</button>
+      <button type="submit" className="btn btn-primary" disabled={buttonDisabled}>{textButton}</button>
     </form>
   )
 }
