@@ -6,7 +6,7 @@ const robotsReducer = (robots = initialState, action) => {
   let newRobots;
 
   switch (action.type) {
-    case actionTypes.loadRobot:
+    case actionTypes.loadRobots:
       newRobots = [...action.robots];
       break;
 

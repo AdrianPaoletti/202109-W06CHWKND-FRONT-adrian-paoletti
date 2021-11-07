@@ -1,5 +1,5 @@
 const actionTypes = {
-  loadRobot: "GET_ROBOT",
+  loadRobots: "GET_ROBOT",
   createRobot: "CREATE_ROBOT",
   deleteRobot: "DELETE_ROBOT",
   updateRobot: "UPDATE_ROBOT",
