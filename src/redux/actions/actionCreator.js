@@ -14,3 +14,18 @@ export const deleteRobotAction = (id) => ({
   type: actionTypes.deleteRobot,
   id,
 });
+
+export const updateRobotAction = (robot) => ({
+  type: actionTypes.updateRobot,
+  robot,
+});
+
+export const loadCurrentRobotAction = (robot) => ({
+  type: actionTypes.loadCurrentRobot,
+  robot,
+});
+
+export const resetCurrentRobotAction = () => ({
+  type: actionTypes.resetCurrentRobot,
+})
+
