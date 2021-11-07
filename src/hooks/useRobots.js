@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { loadCurrentRobotAction, resetCurrentRobotAction, updateRobotAction } from "../redux/actions/actionCreator";
+import { loadCurrentRobotAction, resetCurrentRobotAction } from "../redux/actions/actionCreator";
 import { createRobotThunks, deleteRobotThunk, loadRobotThunks, updateRobotThunk } from "../redux/thunks";
 
 const useRobots = () => {
