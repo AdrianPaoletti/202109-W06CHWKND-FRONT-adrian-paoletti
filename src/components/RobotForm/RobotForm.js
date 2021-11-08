@@ -36,7 +36,8 @@ const RobotForm = () => {
   }, [currentRobot, initialRobotBasic])
 
   useEffect(() => {
-    setButtonDisabled(robotBasic.name === "" || robotBasic.image === "" || robotFeatures.speed === "" || robotFeatures.endurance === "" || robotFeatures.date === "");
+    setButtonDisabled(robotBasic.name === "" || robotBasic.image === "" || robotFeatures.speed === ""
+      || robotFeatures.endurance === "" || robotFeatures.date === "" || robotFeatures.speed.length > 2 || robotFeatures.endurance.length > 2);
   }, [robotBasic, robotFeatures]);
 
   const onChangeBasic = (event) => {
@@ -81,7 +82,7 @@ const RobotForm = () => {
   }, [robotFeatures]);
 
   return (
-    <form autoComplete="off" onSubmit={onSubmit} noValidate>
+    <form autoComplete="off" onSubmit={onSubmit} className="form">
       <div className="form-group">
         <label htmlFor="name">Name:</label>
         <input type="text" className="form-control" name="name" id="name" value={robotBasic.name} onChange={onChangeBasic} placeholder="Introduce Robot Name" />
@@ -93,11 +94,11 @@ const RobotForm = () => {
       <div className="form-row">
         <div className="col-4">
           <label htmlFor="speed">Speed:</label>
-          <input type="number" className="form-control form-control-sm" id="speed" value={robotFeatures.speed} onChange={onChangeFeatures} placeholder="Speed" min="0" max="10" />
+          <input type="number" className={robotFeatures.speed.speed > 2 ? "is-invalid form-control form-control-sm" : "form-control form-control-sm"} id="speed" value={robotFeatures.speed} onChange={onChangeFeatures} placeholder="Speed" min="0" max="10" />
         </div>
         <div className="col-4">
           <label htmlFor="endurance">Endurance:</label>
-          <input type="number" className="form-control form-control-sm" id="endurance" value={robotFeatures.endurance} onChange={onChangeFeatures} placeholder="Endurance" min="0" max="10" />
+          <input type="number" className={robotFeatures.speed.endurance > 2 ? "is-invalid form-control form-control-sm" : "form-control form-control-sm"} id="endurance" value={robotFeatures.endurance} onChange={onChangeFeatures} placeholder="Endurance" min="0" max="10" />
         </div>
         <div className="col-4">
           <label htmlFor="date">Creation date:</label>
