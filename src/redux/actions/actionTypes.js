@@ -5,6 +5,9 @@ const actionTypes = {
   updateRobot: "UPDATE_ROBOT",
   loadCurrentRobot: "LOAD_CURRENT_ROBOT",
   resetCurrentRobot: "RESET_CURRENT_ROBOT",
+
+  loginUser: "LOGIN_ROBOT",
+  logoutUser: "LOGOUT_ROBOT",
 };
 
 export default actionTypes;

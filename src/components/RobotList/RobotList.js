@@ -3,9 +3,9 @@ import useRobots from "../../hooks/useRobots";
 import RobotCard from "../RobotCard/RobotCard";
 
 const RobotList = () => {
-  const { loadRobot, robots, deleteRobot, loadCurrentRobot, updateRobot } = useRobots();
+  const { loadRobot, robots, deleteRobot, loadCurrentRobot } = useRobots();
 
-  useEffect(() => { loadRobot(); }, [loadRobot, updateRobot]);
+  useEffect(() => { loadRobot(); }, [loadRobot]);
 
   return (
     <div className="card-deck card-container">
