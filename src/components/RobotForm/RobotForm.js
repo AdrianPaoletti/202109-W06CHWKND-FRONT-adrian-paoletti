@@ -4,7 +4,7 @@ import useRobots from "../../hooks/useRobots";
 
 const RobotForm = () => {
 
-  const { createRobot, currentRobot, updateRobot } = useRobots();
+  const { createRobot, currentRobot, updateRobot, loadRobot } = useRobots();
 
   const initialRobotFeatures = useMemo(() => ({
     speed: "",

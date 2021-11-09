@@ -27,5 +27,14 @@ export const loadCurrentRobotAction = (robot) => ({
 
 export const resetCurrentRobotAction = () => ({
   type: actionTypes.resetCurrentRobot,
-})
+});
+
+export const userLoginAction = (user) => ({
+  type: actionTypes.loginUser,
+  user
+});
+
+export const userLogOutAction = () => ({
+  type: actionTypes.logoutUser,
+});
 

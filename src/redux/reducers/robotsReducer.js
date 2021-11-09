@@ -4,9 +4,10 @@ const initialState = [];
 const robotsReducer = (robots = initialState, action) => {
 
   let newRobots;
-
   switch (action.type) {
+
     case actionTypes.loadRobots:
+
       newRobots = [...action.robots];
       break;
 
@@ -20,7 +21,7 @@ const robotsReducer = (robots = initialState, action) => {
 
     case actionTypes.updateRobot:
       newRobots = robots.map((robot) =>
-        robot["_id"] === action.id ? {
+        robot["_id"] === action.robot._id ? {
           ...robot,
           ...action.robot,
         } : robot
