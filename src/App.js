@@ -6,7 +6,7 @@ import RobotList from './components/RobotList/RobotList';
 import useRobots from './hooks/useRobots';
 
 function App() {
-  const { loginUser, user } = useRobots();
+  const { user } = useRobots();
 
   /*useEffect(() => {
     const token = JSON.parse(localStorage.getItem("adrian"));
